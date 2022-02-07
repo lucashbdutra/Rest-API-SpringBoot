@@ -31,8 +31,8 @@ public class Product implements Serializable{
     private BigDecimal price;
     private String idCategory;
 
-    @ManyToOne
-    @JoinColumn(name = "category")
+    @ManyToOne //O relacionamento com a outra entity
+    @JoinColumn(name = "category") //o nome da foreign key que o atributo "category" vai representar na tabela Product
     private Category category;
 
     public Product(String name, BigDecimal price, String idCategory) {

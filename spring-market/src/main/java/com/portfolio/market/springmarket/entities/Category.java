@@ -20,18 +20,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Entity
+@Entity //Faz dessa class uma tabela no banco de dados
 public class Category implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; //quando a aplicação cai, por estar serializada ela consegue meio que salvar um backup e voltar do mesmo lugar, algo do tipo
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //especifica que a primaty key do banco de dados é o id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //o metodo de geração desse id vai ser auto increment
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
+    @OneToMany(mappedBy = "category") //A realação com a outra entity e o mappedBy indica qual o nome do campo da outra tabela que é referenta a essa
+    @JsonIgnore //* ignora esse campo na hora do retorno, pois como uma classe aponta pra outra elas ficam em um looop eterno
     private List<Product> products = new ArrayList<>();
 
     public Category(String name) {

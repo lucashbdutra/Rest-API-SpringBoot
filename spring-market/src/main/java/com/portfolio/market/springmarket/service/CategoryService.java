@@ -1,15 +1,13 @@
 package com.portfolio.market.springmarket.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.portfolio.market.springmarket.entities.Category;
 import com.portfolio.market.springmarket.repository.CategoryRepository;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
-
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -18,6 +16,7 @@ public class CategoryService {
 
     public final CategoryRepository categoryRepository;
 
+    /*Retorna uma lista contendo todos os produtos do repositório*/
     public List<Category> getCategories(){
         
         return categoryRepository.findAll();
@@ -25,33 +24,52 @@ public class CategoryService {
 
 
 
+    /*Retorna um produto específico de acordo com o id passado*/
     public Category getCategory(Long id){
         
         return categoryRepository.findById(id).get();
     }
 
 
-
+    /*Adiciona uma nova categoria ao repositório*/
     public Category addCategory(Category category){
-        
-        categoryRepository.save(category);
-        
-        return category;
+
+        List<Category> cat = categoryRepository.findAll().stream()
+                .filter(e -> e.getName().equals(category.getName()))
+                .collect(Collectors.toList());
+
+        if(cat.size() == 0){
+            categoryRepository.save(category);
+            return category;
+        }
+
+        return null;
 
     }
 
 
 
+    /*Deleta uma categoria baseado no id*/
     public Category deleteCategory(Long id){
 
-        Category deleted = categoryRepository.findById(id).get();
-        categoryRepository.deleteById(id);
+        Optional<Category> delete = categoryRepository.findById(id);
 
-        return deleted;
+        if(delete.isPresent()){
+            Category deleted = delete.get();
+            categoryRepository.deleteById(id);
+            return deleted;
+        }
+
+        return null;
+//        Category delete = categoryRepository.findById(id).get();
+//        categoryRepository.deleteById(id);
+//        return delete;
+
     }
 
 
 
+    /*Atualiza uma categoria existente baseado no id passado*/
     public Category putCategory(Category category, Long id){
 
         Optional<Category> cat = categoryRepository.findById(id);

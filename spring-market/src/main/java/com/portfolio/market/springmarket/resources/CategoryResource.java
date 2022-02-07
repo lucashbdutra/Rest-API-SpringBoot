@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RestController
-@RequestMapping(value = "/categories")
+@RestController //controlador rest
+@RequestMapping(value = "/categories") //o caminho base do controller
 public class CategoryResource {
 
-    public final CategoryService categoryService;
+    public final CategoryService categoryService; //Injetando a categoria pelo construtor com lombok
 
+    /*Retorna uma lista com todas as categorias adicionadas*/
     @GetMapping
     public ResponseEntity<List<Category>> findAll(){  
 
@@ -31,7 +32,7 @@ public class CategoryResource {
     }
 
 
-
+    /*Retorna uma úncia categoria de acordo com o id passado*/
     @GetMapping(value = "/{id}")
     public ResponseEntity<Category> findById(@PathVariable Long id){
 
@@ -39,7 +40,7 @@ public class CategoryResource {
     }
 
 
-
+    /*Adciona uma nova categoria ao repository*/
     @PostMapping("/add/category")
     public ResponseEntity<Category> addCategory(@RequestBody Category category){
     
@@ -47,20 +48,21 @@ public class CategoryResource {
     }
 
 
+    /*Deleta uma categoria baseado no id passado*/
     @DeleteMapping("/{id}")
     public ResponseEntity<Category> deleteById(@PathVariable Long id){
-        
-        
+
         return ResponseEntity.ok().body(categoryService.deleteCategory(id));
     }
 
 
+    /*Atualiza uma categoria existente com base no id passado*/
     @PutMapping("/add/category/{id}")
     public ResponseEntity<?> update(@RequestBody Category category, @PathVariable Long id){
         
         return ResponseEntity.ok().body(categoryService.putCategory(category, id));
     }
-    //? Tenho que arrumar um teste para categorias com nomes iguais, ja que o id é gerado sozinho pelo BD.
+
 }
-    //? Tenho que arrumar um teste para categorias com nomes iguais, ja que o id é gerado sozinho pelo BD.
+
 

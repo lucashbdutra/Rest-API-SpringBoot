@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ErrorMessage {
+public class ErrorMessage { //Apenas a classe que eu usei pra settar a mensagem de erro, na medida que eu tiver diferentes mensagens pra diferentes problemas elas vao todas aqui
 
     private Date currentDate;
     private String message;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
+@ControllerAdvice // É uma especialização do "@Component"
 public class AppExceptionHandler extends ResponseEntityExceptionHandler{ //* Essa classe que estou estendendo pega exeptions de algum response entity.
     
     @ExceptionHandler(value = Exception.class)

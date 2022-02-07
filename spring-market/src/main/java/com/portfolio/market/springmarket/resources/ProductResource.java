@@ -22,17 +22,18 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/products")
 public class ProductResource {
 
-    private final ProductService productService;
+    private final ProductService productService; //Usa os métodos do service de produtos
 
+    /*Retorna uma lista de produtos para a requisição*/
     @GetMapping
     public ResponseEntity<List<Product>> findAll(){
         
-        return ResponseEntity.ok().body(productService.getProducts());
+        return ResponseEntity.ok().body(productService.getProducts()); // ResposeEntity com um status ok (da familia 200) e o corpo do retorno que é a lista
         
     }
 
 
-
+    /*Retorna um único produto de acordo com o id passado*/
     @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id){
 
@@ -40,7 +41,7 @@ public class ProductResource {
     }
 
 
-
+    /*Adiciona um novo produto ao repositório*/
     @PostMapping("/add/product")
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
 
@@ -48,7 +49,7 @@ public class ProductResource {
     }     
 
 
-
+    /*Deleta um produto de acordo com o id passado*/
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> deleteById(@PathVariable Long id){
            
@@ -57,7 +58,7 @@ public class ProductResource {
     }
 
 
-
+    /*Atualiza um produto ja existente de acordo com o id passado*/
     @PutMapping("/add/product/{id}")
     public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Long id){
         
