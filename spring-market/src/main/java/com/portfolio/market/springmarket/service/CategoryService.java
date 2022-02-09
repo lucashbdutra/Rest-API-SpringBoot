@@ -12,11 +12,12 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class CategoryService {
+public class CategoryService implements CategoryServiceInterface {
 
     public final CategoryRepository categoryRepository;
 
     /*Retorna uma lista contendo todos os produtos do repositório*/
+    @Override
     public List<Category> getCategories(){
         
         return categoryRepository.findAll();
@@ -25,13 +26,15 @@ public class CategoryService {
 
 
     /*Retorna um produto específico de acordo com o id passado*/
+    @Override
     public Category getCategory(Long id){
         
         return categoryRepository.findById(id).get();
     }
 
 
-    /*Adiciona uma nova categoria ao repositório*/
+    /*Adiciona uma nova categoria ao repositório, não é permitido categorias com o mesmo nome*/
+    @Override
     public Category addCategory(Category category){
 
         List<Category> cat = categoryRepository.findAll().stream()
@@ -50,6 +53,7 @@ public class CategoryService {
 
 
     /*Deleta uma categoria baseado no id*/
+    @Override
     public Category deleteCategory(Long id){
 
         Optional<Category> delete = categoryRepository.findById(id);
@@ -70,6 +74,7 @@ public class CategoryService {
 
 
     /*Atualiza uma categoria existente baseado no id passado*/
+    @Override
     public Category putCategory(Category category, Long id){
 
         Optional<Category> cat = categoryRepository.findById(id);

@@ -14,13 +14,14 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class  ProductService {
+public class  ProductService implements ProductServiceInterface{
 
     public final ProductsRepository productsRepository;
     public final CategoryRepository categoryRepository; // Injetando o repositório da categoria para linkar os produtos as respectivas categorias
 
 
     /*Retorna uma lista com todos os produtos*/
+    @Override
     public List<Product> getProducts() {
 
         return productsRepository.findAll();
@@ -28,13 +29,15 @@ public class  ProductService {
 
 
     /*Retorna um produto específico de acordo com o Id passado*/
+    @Override
     public Product getProduct(Long id) {
 
         return productsRepository.findById(id).get();
     }
 
 
-    /* Adiciona o produto, e linka esse produto a uma categoria */
+    /* Adiciona o produto, e linka esse produto a uma categoria, não é permitido produtos com o mesmo nome */
+    @Override
     public Product addProduct(Product product) {
 
         List<Product> produto = productsRepository.findAll().stream()
@@ -54,6 +57,7 @@ public class  ProductService {
 
 
     /*Deleta um produto de acordo com o id*/
+    @Override
     public Product deleteProduct(Long id) {
         Optional<Product> delete = productsRepository.findById(id);
 
@@ -68,6 +72,7 @@ public class  ProductService {
 
 
     /* Atualiza um produto de acordo com o id passado */
+    @Override
     public Product putProduct(Product product, Long id) {
         Optional<Product> prod = productsRepository.findById(id);
         if (prod.isPresent()) {
