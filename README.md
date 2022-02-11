@@ -5,13 +5,16 @@ Projeto de uma API restful no framework SpringBoot.
 
 ## Sobre o projeto
 
-Uma API que é basicamente uma lista de produtos onde você pode adicionar produtos (com nome preço e a qual categoria pertence) e categorias de produtos(apenas o nome da categoria). Você pode ter várias categorias e cada uma tem uma lista de produtos em seu interior, permitindo uma maior conexão entre as entidades da API.
+A API "spring-market" que é basicamente uma lista de produtos onde você pode adicionar produtos (com nome, preço e a qual categoria pertence) e categorias de produtos(apenas o nome da categoria).Você pode ter várias categorias e cada uma tem uma lista de produtos em seu interior, permitindo uma maior conexão entre as entidades da API. Contendo todos os principais métodos REST: GET, POST, PUT e DELETE.
+
+Além de uma API secundária "market-consumer" que consome os dados da primeira utilizando o "Open Feign", conseguindo trazer dados dos principais GET's: /categories, /categories/{id} e /products, /products/{id}. Os métodos POST, PUT e DELETE serão adicionados posteriormente a ela para que ela consiga manipular totalmente a API principal.
 
 ## Tecnologias utilizadas
 ### Back end
 - Java
 - Spring Boot
 - JPA / Hibernate / H2
+- Open Feign
 - Maven
 
 ## Como executar o projeto
@@ -33,6 +36,8 @@ cd path-to-file
 ## Testes
 
 A criação dos testes unitários ainda está em andamento, mas estou tendo alguns problemas pra fazer os testes na API, caso tenha alguma dica para mim deixe uma Issue, responderei todas ;)
+
+Já os testes da API market-consumer(que consome as informações da API principal) estão todos funcionais, porém ainda falta a adição de teste para o FeignClient.
 
 # Autor
 
