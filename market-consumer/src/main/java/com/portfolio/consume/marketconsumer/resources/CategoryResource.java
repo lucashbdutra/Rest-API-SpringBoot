@@ -3,10 +3,7 @@ package com.portfolio.consume.marketconsumer.resources;
 import com.portfolio.consume.marketconsumer.entities.Category;
 import com.portfolio.consume.marketconsumer.feignClient.FeignClientCategories;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,31 +28,31 @@ public class CategoryResource {
 
         return feignClient.getById(id);
     }
-//
-//
-//    /*Adciona uma nova categoria ao repository*/
-//    @PostMapping("/add/category")
-//    public Category addCategory(@RequestBody Category category){
-//
-//        return
-//    }
-//
-//
-//    /*Deleta uma categoria baseado no id passado*/
-//    @DeleteMapping("/{id}")
-//    public Category deleteById(@PathVariable Long id){
-//
-//        return
-//    }
-//
-//
-//    /*Atualiza uma categoria existente com base no id passado*/
-//    @PutMapping("/add/category/{id}")
-//    public ResponseEntity<?> update(@RequestBody Category category, @PathVariable Long id){
-//
-//        return
-//    }
-//
+
+
+    /*Adciona uma nova categoria ao repository*/
+    @PostMapping("/add/category")
+    public Category addCategory(@RequestBody Category category){
+
+        return feignClient.addCategory(category);
+    }
+
+
+    /*Deleta uma categoria baseado no id passado*/
+    @DeleteMapping("/{id}")
+    public Category deleteById(@PathVariable Long id){
+
+        return feignClient.deleteById(id);
+    }
+
+
+    /*Atualiza uma categoria existente com base no id passado*/
+    @PutMapping("/add/category/{id}")
+    public Object update(@RequestBody Category category, @PathVariable Long id){
+
+        return feignClient.update(category, id);
+    }
+
 }
 
 

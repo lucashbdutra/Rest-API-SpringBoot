@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -67,5 +68,43 @@ class CategoryResourceTest {
         Assertions.assertEquals(Category.class, response.getClass()); //Testando se está retorna um objeto da classe Category
         Assertions.assertEquals(ID, response.getId()); //Testando todos os campos da entity Category
         Assertions.assertEquals(NAME, response.getName());
+    }
+
+    @Test
+    void addCategory_ShouldAddANewCategory_WhenANameIsPassed(){
+        when(feignCategories.addCategory(any())).thenReturn(category);
+
+        Category response = categoryResource.addCategory(category);
+
+        Assertions.assertNotNull(response); //Vendo se o valor não está null
+        Assertions.assertEquals(category, response);
+        Assertions.assertEquals(Category.class, response.getClass());
+        Assertions.assertEquals(ID, response.getId()); //Testando todos os campos da entity Category
+        Assertions.assertEquals(NAME, response.getName());
+    }
+
+    @Test
+    void deleteCategory_ShouldDeleteAndReturnACategory_WhenAnIdIsPassed() {
+        when(feignCategories.deleteById(Mockito.anyLong())).thenReturn(category);
+
+        Category response = categoryResource.deleteById(ID);
+
+        Assertions.assertNotNull(response); //Vendo se o valor não está null
+        Assertions.assertEquals(category, response);
+        Assertions.assertEquals(Category.class, response.getClass());
+        Assertions.assertEquals(ID, response.getId()); //Testando todos os campos da entity Category
+        Assertions.assertEquals(NAME, response.getName());
+
+    }
+
+    @Test
+    void update_ShouldUpdateAndReturnACategory_WhenANameIsPassed() {
+        when(feignCategories.update(any(), Mockito.anyLong())).thenReturn(category);
+
+        Object response = categoryResource.update(category, ID);
+
+        Assertions.assertNotNull(response); //Vendo se o valor não está null
+        Assertions.assertEquals(category, response);
+        Assertions.assertEquals(Category.class, response.getClass());
     }
 }
