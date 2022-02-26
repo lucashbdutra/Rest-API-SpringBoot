@@ -39,6 +39,11 @@ A criação dos testes unitários ainda está em andamento, mas estou tendo algu
 
 Já os testes da API market-consumer(que consome as informações da API principal) estão todos funcionais, porém ainda falta a adição de teste para o FeignClient.
 
+## Documentação
+
+https://documenter.getpostman.com/view/19190144/UVkqqtrC
+https://documenter.getpostman.com/view/19190144/UVkqqtrE
+
 # Autor
 
 Lucas Dutra
