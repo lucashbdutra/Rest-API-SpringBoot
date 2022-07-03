@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController //controlador rest
-@RequestMapping(value = "/categories") //o caminho base do controller
+@RequestMapping(value = "api/v1/categories") //o caminho base do controller
 public class CategoryResource {
 
     public final FeignClientCategories feignClient;
@@ -31,7 +31,7 @@ public class CategoryResource {
 
 
     /*Adciona uma nova categoria ao repository*/
-    @PostMapping("/add/category")
+    @PostMapping
     public Category addCategory(@RequestBody Category category){
 
         return feignClient.addCategory(category);
@@ -47,7 +47,7 @@ public class CategoryResource {
 
 
     /*Atualiza uma categoria existente com base no id passado*/
-    @PutMapping("/add/category/{id}")
+    @PutMapping("/{id}")
     public Object update(@RequestBody Category category, @PathVariable Long id){
 
         return feignClient.update(category, id);

@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 public class ProductResource {
 
     private final ProductService productService; //Usa os métodos do service de produtos
@@ -42,7 +42,7 @@ public class ProductResource {
 
 
     /*Adiciona um novo produto ao repositório*/
-    @PostMapping("/add/product")
+    @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
 
         return ResponseEntity.ok().body(productService.addProduct(product));
@@ -59,8 +59,8 @@ public class ProductResource {
 
 
     /*Atualiza um produto ja existente de acordo com o id passado*/
-    @PutMapping("/add/product/{id}")
-    public ResponseEntity<?> update(@RequestBody Product product, @PathVariable Long id){
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> update(@RequestBody Product product, @PathVariable Long id){
         
         return ResponseEntity.ok().body(productService.putProduct(product, id));
     }

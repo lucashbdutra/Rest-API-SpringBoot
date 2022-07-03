@@ -7,7 +7,7 @@ Projeto de uma API restful no framework SpringBoot.
 
 A API "spring-market" que é basicamente uma lista de produtos onde você pode adicionar produtos (com nome, preço e a qual categoria pertence) e categorias de produtos(apenas o nome da categoria).Você pode ter várias categorias e cada uma tem uma lista de produtos em seu interior, permitindo uma maior conexão entre as entidades da API. Contendo todos os principais métodos REST: GET, POST, PUT e DELETE.
 
-Além de uma API secundária "market-consumer" que consome os dados da primeira utilizando o "Open Feign", conseguindo trazer dados dos principais métodos disponíveis na API principal, tais como GET, POST, PUT e DELETE.
+Além de uma API secundária "market-consumer" que consome os dados da primeira utilizando o "en Feign", conseguindo trazer dados dos principais métodos disponíveis na API principal, tais como GET, POST, PUT e DELETE.
 
 ## Tecnologias utilizadas
 ### Back end
@@ -35,17 +35,17 @@ cd path-to-file
 
 ## Testes
 
-A criação dos testes unitários ainda está em andamento, mas estou tendo alguns problemas pra fazer os testes na API, caso tenha alguma dica para mim deixe uma Issue, responderei todas ;)
-
-Já os testes da API market-consumer(que consome as informações da API principal) estão todos funcionais, porém ainda falta a adição de teste para o FeignClient.
+Os testes unit�rios em sua maioria est�o com 100% de cobertura. Focados principalmente nos services e nos resources.
 
 ## Documentação
 
 spring-market:
 https://documenter.getpostman.com/view/19190144/UVkqqtrC
+http://localhost:8080/swagger-ui/index.html
 
 spring-consumer:
 https://documenter.getpostman.com/view/19190144/UVkqqtrE
+http://localhost:8081/swagger-ui/index.html
 
 # Autor
 

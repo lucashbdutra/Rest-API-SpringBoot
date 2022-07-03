@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController //controlador rest
-@RequestMapping(value = "/categories") //o caminho base do controller
+@RequestMapping("api/v1/categories") //o caminho base do controller
 public class CategoryResource {
 
     public final CategoryService categoryService; //Injetando a categoria pelo construtor com lombok
@@ -33,7 +33,7 @@ public class CategoryResource {
 
 
     /*Retorna uma úncia categoria de acordo com o id passado*/
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Category> findById(@PathVariable Long id){
 
         return ResponseEntity.ok().body(categoryService.getCategory(id));
@@ -41,7 +41,7 @@ public class CategoryResource {
 
 
     /*Adciona uma nova categoria ao repository*/
-    @PostMapping("/add/category")
+    @PostMapping
     public ResponseEntity<Category> addCategory(@RequestBody Category category){
     
         return ResponseEntity.ok().body(categoryService.addCategory(category));
@@ -57,8 +57,8 @@ public class CategoryResource {
 
 
     /*Atualiza uma categoria existente com base no id passado*/
-    @PutMapping("/add/category/{id}")
-    public ResponseEntity<?> update(@RequestBody Category category, @PathVariable Long id){
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> update(@RequestBody Category category, @PathVariable Long id){
         
         return ResponseEntity.ok().body(categoryService.putCategory(category, id));
     }

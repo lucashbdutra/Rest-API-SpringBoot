@@ -1,12 +1,14 @@
 package com.portfolio.market.springmarket.service;
 
 import com.portfolio.market.springmarket.entities.Category;
+import com.portfolio.market.springmarket.exceptions.CategoryNotFound;
+import com.portfolio.market.springmarket.exceptions.ExistingCategory;
+import com.portfolio.market.springmarket.interfaces.CategoryServiceInterface;
 import com.portfolio.market.springmarket.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -27,26 +29,28 @@ public class CategoryService implements CategoryServiceInterface {
 
     /*Retorna um produto específico de acordo com o id passado*/
     @Override
-    public Category getCategory(Long id){
+    public Category getCategory(Long id) throws CategoryNotFound{
         
-        return categoryRepository.findById(id).get();
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFound("Category not found for this id: " + id));
     }
 
 
     /*Adiciona uma nova categoria ao repositório, não é permitido categorias com o mesmo nome*/
     @Override
-    public Category addCategory(Category category){
+    public Category addCategory(Category category) throws ExistingCategory{
 
-        List<Category> cat = categoryRepository.findAll().stream()
+        List<Category> categories = categoryRepository.findAll().stream()
                 .filter(e -> e.getName().equals(category.getName()))
                 .collect(Collectors.toList());
 
-        if(cat.size() == 0){
+        if(categories.size() == 0){
             categoryRepository.save(category);
             return category;
-        }
 
-        return null;
+        }else {
+            throw new ExistingCategory("This category already exist!");
+        }
 
     }
 
@@ -54,45 +58,30 @@ public class CategoryService implements CategoryServiceInterface {
 
     /*Deleta uma categoria baseado no id*/
     @Override
-    public Category deleteCategory(Long id){
+    public Category deleteCategory(Long id) throws CategoryNotFound {
 
-        Optional<Category> delete = categoryRepository.findById(id);
+        Category delete = categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFound("Category not found for this id: " + id));
 
-        if(delete.isPresent()){
-            Category deleted = delete.get();
-            categoryRepository.deleteById(id);
-            return deleted;
+        categoryRepository.deleteById(id);
+
+        return delete;
         }
-
-        return null;
-//        Category delete = categoryRepository.findById(id).get();
-//        categoryRepository.deleteById(id);
-//        return delete;
-
-    }
 
 
 
     /*Atualiza uma categoria existente baseado no id passado*/
     @Override
-    public Category putCategory(Category category, Long id){
+    public Category putCategory(Category category, Long id) throws CategoryNotFound{
 
-        Optional<Category> cat = categoryRepository.findById(id);
+       Category update = categoryRepository.findById(id)
+               .orElseThrow(() -> new CategoryNotFound("Category not found for this id: " + id));
 
-        if(cat.isPresent()){
+       update.setName(category.getName());
 
-            Category obj = cat.get();
+       categoryRepository.save(update);
 
-            if(category.getName() != null){
-                obj.setName(category.getName());
-            }
-
-            categoryRepository.save(obj);
-
-            return obj;
-        }
-        
-        return null;       
+       return update;
     }
 
 

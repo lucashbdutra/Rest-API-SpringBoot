@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/v1/products")
 public class ProductResource {
 
     public final FeignClientProducts feignProducts;
@@ -32,7 +32,7 @@ public class ProductResource {
 
 
     /*Adiciona um novo produto ao repositório*/
-    @PostMapping("/add/product")
+    @PostMapping
     public Product addProduct(@RequestBody Product product){
 
         return feignProducts.addProduct(product);
@@ -49,7 +49,7 @@ public class ProductResource {
 
 
     /*Atualiza um produto ja existente de acordo com o id passado*/
-    @PutMapping("/add/product/{id}")
+    @PutMapping("/{id}")
     public Object update(@RequestBody Product product, @PathVariable Long id){
 
         return feignProducts.update(product, id);

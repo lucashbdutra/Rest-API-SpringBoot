@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@org.springframework.cloud.openfeign.FeignClient(name = "Products", url = "http://localhost:8080/products")
+@org.springframework.cloud.openfeign.FeignClient(name = "Products", url = "http://localhost:8080/api/v1/products")
 public interface FeignClientProducts {
 
     @RequestMapping(method = RequestMethod.GET, value = "")
@@ -16,13 +16,13 @@ public interface FeignClientProducts {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
     Product getById(@PathVariable Long id);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add/product")
+    @RequestMapping(method = RequestMethod.POST, value = "")
     Product addProduct(@RequestBody Product product);
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     Product deleteById(@PathVariable Long id);
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/add/product/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     Object update(@RequestBody Product product, @PathVariable Long id);
 
 }

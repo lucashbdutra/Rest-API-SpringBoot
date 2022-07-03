@@ -11,10 +11,12 @@ public class ErrorMessage { //Apenas a classe que eu usei pra settar a mensagem 
 
     private Date currentDate;
     private String message;
+    private String details;
     
-     public ErrorMessage(Date currentDate, String message) {
+     public ErrorMessage(Date currentDate, String message, String details) {
         this.currentDate = currentDate;
         this.message = message;
+        this.details = details;
     }
     
 }

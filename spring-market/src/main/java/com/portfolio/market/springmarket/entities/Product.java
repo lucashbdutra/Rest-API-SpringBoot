@@ -3,20 +3,17 @@ package com.portfolio.market.springmarket.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 @Entity
@@ -27,19 +24,20 @@ public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private BigDecimal price;
-    private String idCategory;
+
+    @Column(nullable = false)
+    private Long idCategory;
 
     @ManyToOne //O relacionamento com a outra entity
-    @JoinColumn(name = "category") //o nome da foreign key que o atributo "category" vai representar na tabela Product
+    @JoinColumn(name = "category", nullable = false) //o nome da foreign key que o atributo "category" vai representar na tabela Product
     private Category category;
 
-    public Product(String name, BigDecimal price, String idCategory) {
-        this.name = name;
-        this.price = price;
-        this.idCategory = idCategory;
-    }
 
     
 
