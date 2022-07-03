@@ -37,16 +37,18 @@ cd path-to-file
 
 Os testes unitários em sua maioria estÃo com 100% de cobertura. Focados principalmente nos services e nos resources.
 
-## DocumentaÃ§Ã£o
+## Documentação
 
-spring-market:
-
+### spring-market:
+#### Postman
 https://documenter.getpostman.com/view/19190144/UVkqqtrC
+#### Swagger
 http://localhost:8080/swagger-ui/index.html
 
-spring-consumer:
-
+### spring-consumer:
+#### Postman
 https://documenter.getpostman.com/view/19190144/UVkqqtrE
+#### Swagger
 http://localhost:8081/swagger-ui/index.html
 
 # Autor
