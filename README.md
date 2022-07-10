@@ -26,7 +26,7 @@ Pré-requisitos: Java 17
 ## clonar repositório
 git clone https://github.com/lucashbdutra/Rest-API-SpringBoot
 
-## entrar na pasta do projeto que vocÃª quer executar
+## entrar na pasta do projeto que você quer executar
 cd path-to-file
 
 ## executar o projeto
