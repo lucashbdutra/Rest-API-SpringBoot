@@ -5,7 +5,7 @@ Projeto de uma API restful no framework SpringBoot.
 
 ## Sobre o projeto
 
-A API "spring-market" que são basicamente uma lista de produtos onde você pode adicionar produtos (com nome, preço e a qual categoria pertence) e categorias de produtos(apenas o nome da categoria).Você pode ter várias categorias e cada uma tem uma lista de produtos em seu interior, permitindo uma maior conexão entre as entidades da API. Contendo todos os principais mÃ©todos REST: GET, POST, PUT e DELETE.
+A API "spring-market" que são basicamente uma lista de produtos onde você pode adicionar produtos (com nome, preço e a qual categoria pertence) e categorias de produtos(apenas o nome da categoria).Você pode ter várias categorias e cada uma tem uma lista de produtos em seu interior, permitindo uma maior conexão entre as entidades da API. Contendo todos os principais métodos REST: GET, POST, PUT e DELETE.
 
 Além de uma API secundária "market-consumer" que consome os dados da primeira utilizando o "Feign Client", conseguindo trazer dados dos principais métodos disponíveis na API principal, tais como GET, POST, PUT e DELETE.
 
