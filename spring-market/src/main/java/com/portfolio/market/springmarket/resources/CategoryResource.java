@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController //controlador rest
 @RequestMapping("api/v1/categories") //o caminho base do controller
@@ -42,7 +44,7 @@ public class CategoryResource {
 
     /*Adciona uma nova categoria ao repository*/
     @PostMapping
-    public ResponseEntity<Category> addCategory(@RequestBody Category category){
+    public ResponseEntity<Category> addCategory(@Valid @RequestBody Category category){
     
         return ResponseEntity.ok().body(categoryService.addCategory(category));
     }
@@ -58,7 +60,7 @@ public class CategoryResource {
 
     /*Atualiza uma categoria existente com base no id passado*/
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@RequestBody Category category, @PathVariable Long id){
+    public ResponseEntity<Category> update(@Valid @RequestBody Category category, @PathVariable Long id){
         
         return ResponseEntity.ok().body(categoryService.putCategory(category, id));
     }

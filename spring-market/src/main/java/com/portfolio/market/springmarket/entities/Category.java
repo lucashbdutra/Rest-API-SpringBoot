@@ -1,17 +1,16 @@
 package com.portfolio.market.springmarket.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -27,6 +26,7 @@ public class Category implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY) //o metodo de geração desse id vai ser auto increment
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
 

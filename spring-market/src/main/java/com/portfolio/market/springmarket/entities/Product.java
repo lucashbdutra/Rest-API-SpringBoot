@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 
 import lombok.AllArgsConstructor;
@@ -25,12 +26,15 @@ public class Product implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @NotBlank
     @Column(nullable = false)
     private BigDecimal price;
 
+    @NotBlank
     @Column(nullable = false)
     private Long idCategory;
 

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.Valid;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/products")
@@ -43,7 +45,7 @@ public class ProductResource {
 
     /*Adiciona um novo produto ao repositório*/
     @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+    public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product){
 
         return ResponseEntity.ok().body(productService.addProduct(product));
     }     
@@ -60,7 +62,7 @@ public class ProductResource {
 
     /*Atualiza um produto ja existente de acordo com o id passado*/
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@RequestBody Product product, @PathVariable Long id){
+    public ResponseEntity<Product> update(@Valid @RequestBody Product product, @PathVariable Long id){
         
         return ResponseEntity.ok().body(productService.putProduct(product, id));
     }
