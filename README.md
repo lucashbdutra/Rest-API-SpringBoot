@@ -35,7 +35,7 @@ cd path-to-file
 
 ## Testes
 
-Os testes unitários em sua maioria estÃo com 100% de cobertura. Focados principalmente nos services e nos resources.
+Os testes unitários em sua maioria estão com 100% de cobertura. Focados principalmente nos services e nos resources.
 
 ## Documentação
 
