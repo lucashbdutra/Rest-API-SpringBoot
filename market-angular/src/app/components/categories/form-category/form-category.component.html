@@ -1,0 +1,14 @@
+
+<h1>Create Category</h1>
+
+<form [formGroup]="form">
+  <mat-form-field appearance="fill" class="input">
+    <mat-label>Name</mat-label>
+    <input placeholder="Name" matInput formControlName="name">
+  </mat-form-field>
+</form>
+
+<div [align]="'center'">
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+  <button mat-raised-button color="warn" (click)="onCancel()" >Cancel</button>
+</div>

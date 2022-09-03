@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="title-button">
+ <button mat-button (click)="onHome()">Market List</button>
+ <span class="spacer"></span>
+
+    <button mat-raised-button color="primary" (click)="onHome()">Home</button>
+
+    <button mat-raised-button (click)="onCategoryList()" color="primary">Categories</button>
+
+    <button mat-raised-button (click)="onProductList()" color="primary">Products</button>
+
+    <button mat-raised-button [matMenuTriggerFor]="afterMenu" color="primary">About Me</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <a mat-menu-item href="https://www.linkedin.com/in/lucas-dutra-8b41681b7/" target="_blank">Linkedin</a>
+      <a mat-menu-item href="https://github.com/lucashbdutra" target="_blank">GitHub</a>
+    </mat-menu>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

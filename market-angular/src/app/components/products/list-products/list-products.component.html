@@ -1,0 +1,50 @@
+<mat-card>
+  <div class="column-flex" *ngIf="products$ | async as products">
+    <table mat-table [dataSource]="products">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.price }} </mat-cell>
+      </ng-container>
+
+      <!-- Category Column -->
+      <ng-container matColumnDef="category">
+        <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.category.name }} </mat-cell>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell class="action-column-header" *matHeaderCellDef>
+          <button mat-icon-button aria-label="Remover Curso">
+            <mat-icon color="primary">add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell class="action-column" *matCellDef="let element">
+          <button mat-icon-button aria-label="Remover Curso">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+
+          <button mat-icon-button aria-label="Remover Curso">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </table>
+  </div>
+</mat-card>
