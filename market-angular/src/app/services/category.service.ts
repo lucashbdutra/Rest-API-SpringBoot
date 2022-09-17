@@ -22,4 +22,9 @@ export class CategoryService {
   delete(id: string){
     return this.http.delete<Category>(`${this.API}/${id}`);
   }
+
+  update(category:Partial<Category>){
+    let id = category.id;
+    return this.http.put<Category>(`${this.API}/${id}`, category);
+  }
 }

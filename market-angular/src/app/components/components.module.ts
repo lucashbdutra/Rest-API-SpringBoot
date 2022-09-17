@@ -9,6 +9,7 @@ import { ListCategoriesComponent } from './categories/list-categories/list-categ
 import { ComponentsRoutingModule } from './components-routing.module';
 import { IntroComponent } from './intro/intro.component';
 import { ListProductsComponent } from './products/list-products/list-products.component';
+import { FormUpdateCategoryComponent } from './categories/form-update-category/form-update-category.component';
 
 
 
@@ -18,7 +19,8 @@ import { ListProductsComponent } from './products/list-products/list-products.co
     ListCategoriesComponent,
     ListProductsComponent,
     IntroComponent,
-    FormCategoryComponent
+    FormCategoryComponent,
+    FormUpdateCategoryComponent
   ],
   imports: [
     CommonModule,

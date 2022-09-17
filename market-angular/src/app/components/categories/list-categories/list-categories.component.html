@@ -27,7 +27,7 @@
             <mat-icon color="warn">delete</mat-icon>
           </button>
 
-          <button mat-icon-button aria-label="Remover Curso">
+          <button mat-icon-button aria-label="Editar Curso" (click)="onUpdate()">
             <mat-icon color="primary">edit</mat-icon>
           </button>
 
@@ -37,5 +37,12 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </table>
+
+    <ng-template #progress>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
   </div>
 </mat-card>

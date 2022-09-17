@@ -1,6 +1,12 @@
-<h1>Create Category</h1>
+
+<h1>Update Category</h1>
 
 <form [formGroup]="form">
+  <mat-form-field appearance="fill" class="input">
+    <mat-label>Id</mat-label>
+    <input placeholder="Id" matInput formControlName="id">
+  </mat-form-field>
+<br>
   <mat-form-field appearance="fill" class="input">
     <mat-label>Name</mat-label>
     <input placeholder="Name" matInput formControlName="name">
@@ -11,4 +17,3 @@
   <button mat-raised-button color="primary" (click)="onSave()">Save</button>
   <button mat-raised-button color="warn" (click)="onCancel()" >Cancel</button>
 </div>
-

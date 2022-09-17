@@ -1,3 +1,4 @@
+import { FormUpdateCategoryComponent } from '../form-update-category/form-update-category.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Category } from './../../../model/category';
 import { Component, OnInit } from '@angular/core';
@@ -43,5 +44,10 @@ export class ListCategoriesComponent implements OnInit {
     this.service.delete(id).subscribe(()=> this.load());
   }
 
+  onUpdate(){
+    this.dialog.open(FormUpdateCategoryComponent)
+    .afterClosed()
+    .subscribe(() => this.load());
+  }
 
 }
